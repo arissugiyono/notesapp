@@ -31,7 +31,7 @@ class Note {
       dataBaseHelper.TABLE_NOTES_NOTE: note,
       dataBaseHelper.TABLE_NOTES_ISPINNED: isPinned ? 1 : 0,
       dataBaseHelper.TABLE_NOTES_UPDATEDAT: updatedAt.toIso8601String(),
-      dataBaseHelper.TABLE_NOTES_CREATEDAT: createdAt.toIso8601String(),
+      dataBaseHelper.TABLE_NOTES_CREATEDAT: createdAt.toIso8601String()
     };
   }
 

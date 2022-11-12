@@ -70,6 +70,8 @@ class Notes with ChangeNotifier {
         await NoteApi().toggleIsPinned(
             id, _notes[index].isPinned, _notes[index].updatedAt);
         notifyListeners();
+        await dataBaseHelper().toggleIsPinned(
+            id, _notes[index].isPinned, _notes[index].updatedAt);
       }
     } catch (e) {
       _notes[index].isPinned = !_notes[index].isPinned;
@@ -83,6 +85,7 @@ class Notes with ChangeNotifier {
     try {
       String id = await NoteApi().postNote(note);
       note = note.copyWith(id: id);
+      await dataBaseHelper().insertNote(note);
       _notes.add(note);
       notifyListeners();
     } catch (e) {
@@ -97,6 +100,7 @@ class Notes with ChangeNotifier {
   Future<void> updateNote(Note newNote) async {
     try {
       await NoteApi().updateNote(newNote);
+      await dataBaseHelper().updateNote(newNote);
       int index = _notes.indexWhere((note) => note.id == newNote.id);
       _notes[index] = newNote;
       notifyListeners();
@@ -112,6 +116,7 @@ class Notes with ChangeNotifier {
       _notes.removeWhere((note) => note.id == id);
       notifyListeners();
       await NoteApi().deleteNote(id);
+      await dataBaseHelper().deleleteNote(id);
     } catch (e) {
       _notes.insert(index, tempNote);
       notifyListeners();
