@@ -10,11 +10,11 @@ class Note {
   bool isPinned;
 
   Note(
-      {@required this.id,
-      @required this.title,
-      @required this.note,
-      @required this.updatedAt,
-      @required this.createdAt,
+      {required this.id,
+      required this.title,
+      required this.note,
+      required this.updatedAt,
+      required this.createdAt,
       this.isPinned = false});
 
   Note.formDb(Map<String, dynamic> data)
@@ -36,12 +36,12 @@ class Note {
   }
 
   Note copyWith(
-      {String id,
-      String title,
-      String note,
-      DateTime updatedAt,
-      DateTime createdAt,
-      bool ispinned}) {
+      {String? id,
+      String? title,
+      String? note,
+      DateTime? updatedAt,
+      DateTime? createdAt,
+      bool? ispinned}) {
     return Note(
       id: id == null ? this.id : id,
       title: title == null ? this.title : title,

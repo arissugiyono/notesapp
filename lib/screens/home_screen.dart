@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {
             Navigator.of(context).pushNamed(addOrDetailScreen.routeName);
           },
-          child: Icon(Icons.add),
+          child: Icon(Icons.add_task),
           backgroundColor: Colors.cyan,
         ));
   }

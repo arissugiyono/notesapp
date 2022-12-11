@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData.dark(),
           home: HomeScreen(),
           routes: {
-            addOrDetailScreen.routeName: (context) => addOrDetailScreen()
+            addOrDetailScreen.routeName: (context) => addOrDetailScreen(),
           }),
     );
   }
