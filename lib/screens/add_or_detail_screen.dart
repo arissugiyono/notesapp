@@ -12,8 +12,11 @@ class addOrDetailScreen extends StatefulWidget {
 }
 
 class _addOrDetailScreenState extends State<addOrDetailScreen> {
-  Note _note =
-      Note(id: null, title: '', note: '', updatedAt: null, createdAt: null);
+  Note _note = Note(
+    id: '',
+    title: '',
+    note: '',
+  );
 
   final _formkey = GlobalKey<FormState>();
 
@@ -21,10 +24,13 @@ class _addOrDetailScreenState extends State<addOrDetailScreen> {
   bool _isLoading = false;
 
   void submitNote() async {
-    _formkey.currentState.save();
-    setState(() {
-      _isLoading = true;
-    });
+    if (_formkey.currentState != null) {
+      _formkey.currentState!.save();
+      setState(() {
+        _isLoading = true;
+      });
+    }
+
     try {
       final now = DateTime.now();
       _note = _note.copyWith(updatedAt: now, createdAt: now);
@@ -56,7 +62,7 @@ class _addOrDetailScreenState extends State<addOrDetailScreen> {
   @override
   void didChangeDependencies() {
     if (_init) {
-      String id = ModalRoute.of(context).settings.arguments;
+      String? id = ModalRoute.of(context)!.settings.arguments as String?;
       if (id != null) {
         _note = Provider.of<Notes>(context).getNote(id);
       }
@@ -127,7 +133,7 @@ class _addOrDetailScreenState extends State<addOrDetailScreen> {
               bottom: 10,
               right: 10,
               child: _note.updatedAt != null
-                  ? Text('terakhir diubah  ${_convertDate(_note.updatedAt)}')
+                  ? Text('terakhir diubah  ${_convertDate(_note.updatedAt!)}')
                   : Container(),
             )
         ],

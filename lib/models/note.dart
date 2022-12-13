@@ -5,16 +5,16 @@ class Note {
   final String id;
   final String title;
   final String note;
-  final DateTime updatedAt;
-  final DateTime createdAt;
+  final DateTime? updatedAt;
+  final DateTime? createdAt;
   bool isPinned;
 
   Note(
       {required this.id,
       required this.title,
       required this.note,
-      required this.updatedAt,
-      required this.createdAt,
+      this.updatedAt,
+      this.createdAt,
       this.isPinned = false});
 
   Note.formDb(Map<String, dynamic> data)
@@ -30,8 +30,8 @@ class Note {
       dataBaseHelper.TABLE_NOTES_TITLE: title,
       dataBaseHelper.TABLE_NOTES_NOTE: note,
       dataBaseHelper.TABLE_NOTES_ISPINNED: isPinned ? 1 : 0,
-      dataBaseHelper.TABLE_NOTES_UPDATEDAT: updatedAt.toIso8601String(),
-      dataBaseHelper.TABLE_NOTES_CREATEDAT: createdAt.toIso8601String()
+      dataBaseHelper.TABLE_NOTES_UPDATEDAT: updatedAt!.toIso8601String(),
+      dataBaseHelper.TABLE_NOTES_CREATEDAT: createdAt!.toIso8601String()
     };
   }
 

@@ -6,12 +6,12 @@ import 'package:notes_app/screens/add_or_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class NoteItem extends StatefulWidget {
-  final String id;
+  final String? id;
   final BuildContext ctx;
 
   NoteItem({
-    @required this.id,
-    @required this.ctx,
+    required this.id,
+    required this.ctx,
   });
 
   @override

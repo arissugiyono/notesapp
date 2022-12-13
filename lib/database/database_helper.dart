@@ -79,7 +79,7 @@ ADD COLUMN test_column_baru INTEGER DEFAULT 0
   }
 
   Future<void> toggleIsPinned(
-      String id, bool isPinned, DateTime updatedAt) async {
+      String? id, bool isPinned, DateTime updatedAt) async {
     final db = await dataBaseHelper.Init();
     await db.update(
       TABLE_NOTES,
@@ -92,7 +92,7 @@ ADD COLUMN test_column_baru INTEGER DEFAULT 0
     );
   }
 
-  Future<void> deleleteNote(String id) async {
+  Future<void> deleleteNote(String? id) async {
     final db = await dataBaseHelper.Init();
     await db.delete(TABLE_NOTES, where: '$TABLE_NOTES_ID = ?', whereArgs: [id]);
   }
